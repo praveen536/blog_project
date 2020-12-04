@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+{% for post in post_list %}
+    <div class="card" style="width: 18rem;">
+        <!-- <img class="card-img-top" src=".../100px180/" alt="Card image cap"> -->
+        <div class="card-body">
+          <h5 class="card-title"><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></h5>
+          <p class="card-text">Published on : {{post.publish_date|date:"D M Y"}}</p>
+          <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary">Comments: {{post.approve_comment.count}}</a>
+        </div>
+      </div>
+{% endfor %}
+{% endblock %}
+    
